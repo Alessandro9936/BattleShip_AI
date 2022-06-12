@@ -58,6 +58,15 @@ describe("receiveAttack ()", () => {
     expect(testBoard.board[attackedCoord].isHit).toBe(true);
   });
 
+  it("attacked cell has NOT a ship, check that cell as hitted", () => {
+    const entry = 2;
+    testBoard.placeShip(entry, typeOfShips[2]);
+    const attackedCoord = 9;
+    testBoard.receiveAttack(attackedCoord);
+
+    expect(testBoard.board[attackedCoord].isHit).toBe(true);
+    expect(testBoard.board[attackedCoord].hasShip).toBe(false);
+  });
   it("attacked cell has a ship, expect to call hit method on the ship placed at attacked cell", () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);

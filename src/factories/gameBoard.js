@@ -28,9 +28,16 @@ class gameBoard {
   receiveAttack(entry) {
     const attackedCell = this.board[entry];
     attackedCell.isHit = true;
-    attackedCell.hasShip?.hit();
-    const shipIsSunk = attackedCell.hasShip?.isSunk();
+    if (attackedCell.hasShip) {
+      attackedCell.hasShip.hit(entry);
+      attackedCell.hasShip?.isSunk();
+    }
     // ADD LOGIC WHEN SUNKED
+  }
+
+  checkIfAllShipAreSunk() {
+    const shipsArr = this.board.filter((cell) => cell.hasShip);
+    return shipsArr.every((ship) => ship.hasShip.sunk);
   }
 
   _addShipInBoard(coords, ship) {
