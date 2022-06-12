@@ -4,6 +4,7 @@ class Ship {
     this.shipLength = length;
     this.coords = coords;
     this.hits = [];
+    this.sunk = false;
   }
 
   hit(hitCoord) {
@@ -11,7 +12,11 @@ class Ship {
   }
 
   isSunk() {
-    return this.shipLength === this.hits.length ? true : false;
+    if (this.shipLength === this.hits.length) {
+      this.sunk = true;
+      return this.sunk;
+    }
+    return this.sunk;
   }
 }
 
