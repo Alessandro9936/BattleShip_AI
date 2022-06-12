@@ -8,6 +8,15 @@ describe("hit method", () => {
     testShip.hit(hitCoord);
     expect(testShip.hits).toHaveLength(1);
   });
+
+  it("add two attacks to hits array", () => {
+    const hitCoord = 2;
+    const hitCoord2 = 3;
+    testShip.hit(hitCoord);
+    testShip.hit(hitCoord2);
+    expect(testShip.hits).toHaveLength(2);
+    expect(testShip.sunk).toBe(false);
+  });
 });
 describe("isSunk method", () => {
   it("all coords of a boat are hitted, boat is sunk", () => {
@@ -19,6 +28,7 @@ describe("isSunk method", () => {
     testShip.hit(hitCoord3);
     let test = testShip.isSunk();
     expect(test).toBe(true);
+    expect(testShip.sunk).toBe(true);
   });
 
   it("NOT all coords of a boat are hitted, boat is NOT sunk", () => {
