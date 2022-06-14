@@ -10,7 +10,7 @@ class gameBoard {
 
   createGameBoard() {
     const board = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 1; i <= 100; i++) {
       board.push({ cell: i, hasShip: false, isHit: false });
     }
     return board;
@@ -18,11 +18,16 @@ class gameBoard {
 
   placeShip(entry, ship) {
     //id, length, coords
-    const { id, length } = ship;
-    const coords = this._getShipCoords(entry, length);
-    const newShip = new Ship(id, length, coords);
-    this.shipsInBoard.push(newShip);
-    this._addShipInBoard(coords, newShip);
+    try {
+      const { id, length } = ship;
+      const coords = this._getShipCoords(entry, length);
+      this._checkPlacingCoords(coords);
+      const newShip = new Ship(id, length, coords);
+      this._addShipInBoard(coords, newShip);
+      this.shipsInBoard.push(newShip);
+    } catch (error) {
+      throw error;
+    }
   }
 
   receiveAttack(entry) {
@@ -41,7 +46,7 @@ class gameBoard {
   }
 
   _addShipInBoard(coords, ship) {
-    coords.forEach((coord) => (this.board[coord].hasShip = ship));
+    coords.forEach((coord) => (this.board[coord - 1].hasShip = ship));
   }
 
   _getShipCoords(entry, length) {
@@ -56,6 +61,29 @@ class gameBoard {
       }
     }
     return coords;
+  }
+
+  _checkPlacingCoords(coords) {
+    let canPlaceCoords;
+    //Check if coords are inside row
+    if (this.dir === "h") {
+      const min = Math.floor(coords[0] / 10) + "1";
+      const max = Math.floor(coords[0] / 10 + 1) + "0";
+      canPlaceCoords = coords.every((coord) => coord >= min && coord <= max);
+    } else if (this.dir === "v") {
+      canPlaceCoords = coords.every((coord) => coord <= 100);
+    }
+    //check if ship collides
+    const checkIfCollide = coords.every((coord) => !this.board[coord]?.hasShip);
+
+    return this._isPlacementPossible(checkIfCollide, canPlaceCoords);
+  }
+
+  _isPlacementPossible(noCollision, insideTable) {
+    if (!noCollision || !insideTable) {
+      throw new Error("can't place ship");
+    }
+    return true;
   }
 
   tweakDirection() {

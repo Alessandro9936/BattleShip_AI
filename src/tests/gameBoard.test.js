@@ -42,10 +42,10 @@ describe("placeShip()", () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);
 
-    expect(testBoard.board[2].hasShip).not.toBeFalsy();
-    expect(testBoard.board[3].hasShip).not.toBeFalsy();
-    expect(testBoard.board[4].hasShip).not.toBeFalsy();
-    expect(testBoard.board[5].hasShip).toBeFalsy();
+    expect(testBoard.board[2 - 1].hasShip).not.toBeFalsy();
+    expect(testBoard.board[3 - 1].hasShip).not.toBeFalsy();
+    expect(testBoard.board[4 - 1].hasShip).not.toBeFalsy();
+    expect(testBoard.board[5 - 1].hasShip).toBeFalsy();
   });
 });
 describe("receiveAttack ()", () => {
@@ -85,5 +85,27 @@ describe("receiveAttack ()", () => {
     expect(testBoard.board[attackedCoord].hasShip.isSunk).toHaveBeenCalledTimes(
       1
     );
+  });
+  it("place all ships successfully", () => {
+    testBoard.tweakDirection();
+    testBoard.placeShip(13, typeOfShips[0]);
+    testBoard.tweakDirection();
+    testBoard.placeShip(25, typeOfShips[1]);
+    testBoard.placeShip(91, typeOfShips[2]);
+    testBoard.tweakDirection();
+    testBoard.placeShip(46, typeOfShips[3]);
+    testBoard.placeShip(79, typeOfShips[4]);
+
+    expect(testBoard.shipsInBoard).toHaveLength(5);
+  });
+
+  it("doesn't place ship if coords collide", () => {
+    testBoard.tweakDirection();
+    testBoard.placeShip(13, typeOfShips[0]);
+    testBoard.tweakDirection();
+
+    expect(() => {
+      testBoard.placeShip(22, typeOfShips[1]);
+    }).toThrowError();
   });
 });
