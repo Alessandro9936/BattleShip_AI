@@ -55,7 +55,7 @@ describe("receiveAttack ()", () => {
     const attackedCoord = 2;
     testBoard.receiveAttack(attackedCoord);
 
-    expect(testBoard.board[attackedCoord].isHit).toBe(true);
+    expect(testBoard.board[attackedCoord - 1].isHit).toBe(true);
   });
 
   it("attacked cell has NOT a ship, check that cell as hitted", () => {
@@ -64,8 +64,8 @@ describe("receiveAttack ()", () => {
     const attackedCoord = 9;
     testBoard.receiveAttack(attackedCoord);
 
-    expect(testBoard.board[attackedCoord].isHit).toBe(true);
-    expect(testBoard.board[attackedCoord].hasShip).toBe(false);
+    expect(testBoard.board[attackedCoord - 1].isHit).toBe(true);
+    expect(testBoard.board[attackedCoord - 1].hasShip).toBe(false);
   });
   it("attacked cell has a ship, expect to call hit method on the ship placed at attacked cell", () => {
     const entry = 2;
@@ -106,6 +106,17 @@ describe("receiveAttack ()", () => {
 
     expect(() => {
       testBoard.placeShip(22, typeOfShips[1]);
+    }).toThrowError();
+  });
+  it("doesn't place ship if coords goes outside horizontally", () => {
+    expect(() => {
+      testBoard.placeShip(8, typeOfShips[0]);
+    }).toThrowError();
+  });
+  it("doesn't place ship if coords goes outside vertically", () => {
+    testBoard.tweakDirection();
+    expect(() => {
+      testBoard.placeShip(70, typeOfShips[0]);
     }).toThrowError();
   });
 });

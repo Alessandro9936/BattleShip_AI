@@ -19,11 +19,11 @@ class gameBoard {
   placeShip(entry, ship) {
     //id, length, coords
     try {
-      const { id, length } = ship;
-      const coords = this._getShipCoords(entry, length);
-      this._checkPlacingCoords(coords);
-      const newShip = new Ship(id, length, coords);
-      this._addShipInBoard(coords, newShip);
+      const { id, length, shipCoords } = this._getShipProperties(entry, ship);
+      console.log(shipCoords);
+      this._checkCoords(shipCoords);
+      const newShip = this._createShip(id, length, shipCoords);
+      this._addShipInBoard(shipCoords, newShip);
       this.shipsInBoard.push(newShip);
     } catch (error) {
       throw error;
@@ -31,7 +31,7 @@ class gameBoard {
   }
 
   receiveAttack(entry) {
-    const attackedCell = this.board[entry];
+    const attackedCell = this.board[entry - 1];
     attackedCell.isHit = true;
     if (attackedCell.hasShip) {
       attackedCell.hasShip.hit(entry);
@@ -45,38 +45,48 @@ class gameBoard {
     return shipsArr.every((ship) => ship.hasShip.sunk);
   }
 
-  _addShipInBoard(coords, ship) {
-    coords.forEach((coord) => (this.board[coord - 1].hasShip = ship));
+  _getShipProperties(entry, ship) {
+    const { id, length } = ship;
+    const shipCoords = this._getShipCoords(entry, length);
+    return { id, length, shipCoords };
   }
 
   _getShipCoords(entry, length) {
-    const coords = [];
+    const shipCoords = [];
     if (this.dir === "h") {
       for (let i = 0; i < length; i++) {
-        coords.push(entry + i);
+        shipCoords.push(entry + i);
       }
     } else if (this.dir === "v") {
       for (let i = 0; i < length; i++) {
-        coords.push(entry + i * 10);
+        shipCoords.push(entry + i * 10);
       }
     }
-    return coords;
+    return shipCoords;
   }
 
-  _checkPlacingCoords(coords) {
-    let canPlaceCoords;
-    //Check if coords are inside row
-    if (this.dir === "h") {
-      const min = Math.floor(coords[0] / 10) + "1";
-      const max = Math.floor(coords[0] / 10 + 1) + "0";
-      canPlaceCoords = coords.every((coord) => coord >= min && coord <= max);
-    } else if (this.dir === "v") {
-      canPlaceCoords = coords.every((coord) => coord <= 100);
-    }
+  _checkCoords(shipCoords) {
+    //Check is shipCoords are inside gameBoard
+    const canPlaceCoords =
+      this.dir === "h"
+        ? this._horizontalCoordsCheck(shipCoords)
+        : this._verticalCoordsCheck(shipCoords);
     //check if ship collides
-    const checkIfCollide = coords.every((coord) => !this.board[coord]?.hasShip);
+    const checkIfShipsCollide = shipCoords.every(
+      (coord) => !this.board[coord - 1]?.hasShip
+    );
 
-    return this._isPlacementPossible(checkIfCollide, canPlaceCoords);
+    return this._isPlacementPossible(checkIfShipsCollide, canPlaceCoords);
+  }
+
+  _horizontalCoordsCheck(shipCoords) {
+    const min = Math.floor(shipCoords[0] / 10) + "1";
+    const max = Math.floor(shipCoords[0] / 10 + 1) + "0";
+    return shipCoords.every((coord) => coord >= min && coord <= max);
+  }
+
+  _verticalCoordsCheck(shipCoords) {
+    return shipCoords.every((coord) => coord <= 100);
   }
 
   _isPlacementPossible(noCollision, insideTable) {
@@ -84,6 +94,15 @@ class gameBoard {
       throw new Error("can't place ship");
     }
     return true;
+  }
+
+  _createShip(id, length, shipCoords) {
+    const newShip = new Ship(id, length, shipCoords);
+    return newShip;
+  }
+
+  _addShipInBoard(shipCoords, ship) {
+    shipCoords.forEach((coord) => (this.board[coord - 1].hasShip = ship));
   }
 
   tweakDirection() {
