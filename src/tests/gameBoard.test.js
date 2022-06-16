@@ -58,6 +58,13 @@ describe("receiveAttack ()", () => {
     expect(testBoard.board[attackedCoord - 1].isHit).toBe(true);
   });
 
+  it("check coord in gameBoard to hit if coord is given", () => {
+    testBoard.receiveAttack(2);
+    expect(() => {
+      testBoard.receiveAttack(2);
+    }).toThrowError();
+  });
+
   it("attacked cell has NOT a ship, check that cell as hitted", () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);

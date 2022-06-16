@@ -31,13 +31,21 @@ class gameBoard {
   }
 
   receiveAttack(entry) {
-    const attackedCell = this.board[entry - 1];
-    attackedCell.isHit = true;
-    if (attackedCell.hasShip) {
-      attackedCell.hasShip.hit(entry);
-      attackedCell.hasShip?.isSunk();
+    try {
+      const attackedCell = this.board[entry - 1];
+      this._checkIfAttackIsValid(attackedCell);
+      attackedCell.isHit = true;
+      if (attackedCell.hasShip) {
+        attackedCell.hasShip.hit(entry);
+        attackedCell.hasShip?.isSunk();
+      }
+      // ADD LOGIC WHEN SUNKED}
+    } catch (error) {
+      throw error;
     }
-    // ADD LOGIC WHEN SUNKED
+  }
+  _checkIfAttackIsValid(attackedCell) {
+    if (attackedCell.isHit) throw new Error("Can't hit coord multiple times");
   }
 
   checkIfAllShipAreSunk() {
