@@ -20,7 +20,6 @@ class gameBoard {
     //id, length, coords
     try {
       const { id, length, shipCoords } = this._getShipProperties(entry, ship);
-      console.log(shipCoords);
       this._checkCoords(shipCoords);
       const newShip = this._createShip(id, length, shipCoords);
       this._addShipInBoard(shipCoords, newShip);
