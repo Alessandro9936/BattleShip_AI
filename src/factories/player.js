@@ -1,6 +1,4 @@
 import gameBoard from "./gameBoard";
-import typeOfShips from "../helpers/typeOfShips";
-import Ship from "./ship";
 
 class Player {
   constructor(status = true) {
@@ -9,6 +7,9 @@ class Player {
   }
   receive(coord) {
     this.gameBoard.receiveAttack(coord);
+  }
+  switchStatus() {
+    return (this.status = this.status === true ? false : true);
   }
 }
 export default Player;

@@ -24,4 +24,15 @@ describe("Player ()", () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(attacked);
   });
+  it("expect to switch status to false when called (default true)", () => {
+    testPlayer.switchStatus();
+    expect(testPlayer.status).toBe(false);
+  });
+
+  it("expect to switch status to false when called (set false)", () => {
+    testPlayer.switchStatus();
+    testPlayer.switchStatus();
+
+    expect(testPlayer.status).toBe(true);
+  });
 });
