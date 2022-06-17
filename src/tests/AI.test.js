@@ -1,5 +1,6 @@
 import gameBoard from "../factories/gameBoard";
 import AI from "../factories/AI";
+import typeOfShips from "../helpers/typeOfShips";
 
 jest.mock("../factories/gameBoard");
 
@@ -34,5 +35,13 @@ describe("Player ()", () => {
     testAI.switchStatus();
 
     expect(testAI.status).toBe(false);
+  });
+
+  describe("placeRandomShips", () => {
+    it("place 5 ships on gameBoard automatically", () => {
+      testAI.placeRandomShips();
+      let spy = jest.spyOn(gameBoard.prototype, "placeShip");
+      expect(spy).toHaveBeenCalled();
+    });
   });
 });
