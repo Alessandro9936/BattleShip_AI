@@ -37,11 +37,13 @@ describe("Player ()", () => {
     expect(testAI.status).toBe(false);
   });
 
-  describe("placeRandomShips", () => {
-    it("place 5 ships on gameBoard automatically", () => {
-      testAI.placeRandomShips();
-      let spy = jest.spyOn(gameBoard.prototype, "placeShip");
-      expect(spy).toHaveBeenCalled();
-    });
+  it("place 5 ships on gameBoard automatically", () => {
+    testAI.placeRandomShips();
+    let spy = jest.spyOn(gameBoard.prototype, "placeShip");
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it("sendAttack returns a number", () => {
+    expect(testAI.sendAttack()).not.toBeNaN();
   });
 });

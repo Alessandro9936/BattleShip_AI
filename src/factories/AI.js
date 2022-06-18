@@ -5,11 +5,12 @@ import typeOfShips from "../helpers/typeOfShips";
 class AI extends Player {
   constructor(status) {
     super(status, gameBoard);
+    this.attackedCoordsArr = Array.from({ length: 99 }, (_, i) => i + 1);
   }
 
   placeRandomShips() {
     typeOfShips.forEach((ship) => {
-      const randomEntry = this._generateRandomNumber();
+      const randomEntry = this._generateRandomNumber(1, 100);
       this._generateShip(randomEntry, ship);
       this.gameBoard.tweakDirection();
     });
@@ -20,12 +21,21 @@ class AI extends Player {
       this.gameBoard.placeShip(entry, ship);
     } catch {
       if (this.gameBoard.shipsInBoard.includes(ship)) return;
-      this._generateShip(this._generateRandomNumber(), ship);
+      this._generateShip(this._generateRandomNumber(1, 100), ship);
     }
   }
 
-  _generateRandomNumber() {
-    return Math.floor(Math.random() * 100 + 1);
+  sendAttack() {
+    const index = this._generateRandomNumber(
+      0,
+      this.attackedCoordsArr.length - 1
+    );
+    const [attackedCoord] = this.attackedCoordsArr.splice(index, 1);
+    return attackedCoord;
+  }
+
+  _generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }
 
