@@ -5,6 +5,7 @@
   "rules": {
     "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "no-underscore-dangle": ["error", { "allow": true }]
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "no-return-assign": ["error", "except-parens"]
   }
 }

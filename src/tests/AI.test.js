@@ -1,11 +1,11 @@
-import gameBoard from '../factories/gameBoard';
+/* eslint-disable no-undef */
+import GameBoard from '../factories/gameBoard';
 import AI from '../factories/AI';
-import typeOfShips from '../helpers/typeOfShips';
 
 jest.mock('../factories/gameBoard');
 
 beforeEach(() => {
-  gameBoard.mockClear();
+  GameBoard.mockClear();
 });
 
 describe('Player ()', () => {
@@ -14,14 +14,14 @@ describe('Player ()', () => {
     testAI = new AI(false);
   });
 
-  it('expect gameBoard to have been instantied when a new player is created', () => {
-    expect(gameBoard).toHaveBeenCalledTimes(1);
+  it('expect GameBoard to have been instantied when a new player is created', () => {
+    expect(GameBoard).toHaveBeenCalledTimes(1);
   });
-  it('expect receiveAttack method on gameBoard to be called when opponent attack a coord', () => {
-    let spy = jest.spyOn(gameBoard.prototype, 'receiveAttack');
+  it('expect receiveAttack method on GameBoard to be called when opponent attack a coord', () => {
+    const spy = jest.spyOn(GameBoard.prototype, 'receiveAttack');
     const attacked = 2;
     testAI.receive(2);
-    expect(gameBoard).toHaveBeenCalledTimes(1);
+    expect(GameBoard).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(attacked);
   });
@@ -37,9 +37,9 @@ describe('Player ()', () => {
     expect(testAI.status).toBe(false);
   });
 
-  it('place 5 ships on gameBoard automatically', () => {
+  it('place 5 ships on GameBoard automatically', () => {
     testAI.placeRandomShips();
-    let spy = jest.spyOn(gameBoard.prototype, 'placeShip');
+    const spy = jest.spyOn(GameBoard.prototype, 'placeShip');
     expect(spy).toHaveBeenCalled();
   });
 

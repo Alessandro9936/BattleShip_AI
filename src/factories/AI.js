@@ -1,9 +1,8 @@
 import Player from './player';
-import gameBoard from './gameBoard';
 import typeOfShips from '../helpers/typeOfShips';
 
 class AI extends Player {
-  constructor(status) {
+  constructor(status, gameBoard) {
     super(status, gameBoard);
     this.attackedCoordsArr = Array.from({ length: 99 }, (_, i) => i + 1);
   }

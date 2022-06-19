@@ -1,13 +1,14 @@
-import gameBoard from '../factories/gameBoard';
+/* eslint-disable no-undef */
+import GameBoard from '../factories/gameBoard';
 import Ship from '../factories/ship';
 import typeOfShips from '../helpers/typeOfShips';
 
 jest.mock('../factories/ship');
 
 let testBoard;
-beforeEach(() => (testBoard = new gameBoard()));
+beforeEach(() => (testBoard = new GameBoard()));
 
-it('create array when instance of gameBoard is created', () => {
+it('create array when instance of GameBoard is created', () => {
   expect(testBoard.board).toHaveLength(100);
 });
 describe('placeShip()', () => {
@@ -49,7 +50,7 @@ describe('placeShip()', () => {
   });
 });
 describe('receiveAttack ()', () => {
-  it('check coord in gameBoard to hit if coord is given', () => {
+  it('check coord in GameBoard to hit if coord is given', () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);
     const attackedCoord = 2;
@@ -58,7 +59,7 @@ describe('receiveAttack ()', () => {
     expect(testBoard.board[attackedCoord - 1].isHit).toBe(true);
   });
 
-  it('check coord in gameBoard to hit if coord is given', () => {
+  it('check coord in GameBoard to hit if coord is given', () => {
     testBoard.receiveAttack(2);
     expect(() => {
       testBoard.receiveAttack(2);

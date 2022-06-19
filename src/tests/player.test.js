@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Player from '../factories/player';
 import gameBoard from '../factories/gameBoard';
 
@@ -17,7 +18,7 @@ describe('Player ()', () => {
     expect(gameBoard).toHaveBeenCalledTimes(1);
   });
   it('expect receiveAttack method on gameBoard to be called when opponent attack a coord', () => {
-    let spy = jest.spyOn(gameBoard.prototype, 'receiveAttack');
+    const spy = jest.spyOn(gameBoard.prototype, 'receiveAttack');
     const attacked = 2;
     testPlayer.receive(2);
     expect(gameBoard).toHaveBeenCalledTimes(1);

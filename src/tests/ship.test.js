@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Ship from '../factories/ship';
 
 let testShip;
@@ -26,7 +27,7 @@ describe('isSunk method', () => {
     testShip.hit(hitCoord1);
     testShip.hit(hitCoord2);
     testShip.hit(hitCoord3);
-    let test = testShip.isSunk();
+    const test = testShip.isSunk();
     expect(test).toBe(true);
     expect(testShip.sunk).toBe(true);
   });
@@ -38,7 +39,7 @@ describe('isSunk method', () => {
     testShip.hit(hitCoord1);
     testShip.hit(hitCoord2);
 
-    let test = testShip.isSunk();
+    const test = testShip.isSunk();
     expect(test).toBe(false);
   });
 });

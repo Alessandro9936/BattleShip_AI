@@ -1,15 +1,17 @@
-import gameBoard from './gameBoard';
+import GameBoard from './gameBoard';
 
 class Player {
   constructor(status = true) {
     this.status = status;
-    this.gameBoard = new gameBoard();
+    this.gameBoard = new GameBoard();
   }
+
   receive(coord) {
     this.gameBoard.receiveAttack(coord);
   }
+
   switchStatus() {
-    return (this.status = this.status === true ? false : true);
+    return (this.status = !this.status);
   }
 }
 export default Player;
