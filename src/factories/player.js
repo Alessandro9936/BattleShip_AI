@@ -1,4 +1,4 @@
-import gameBoard from "./gameBoard";
+import gameBoard from './gameBoard';
 
 class Player {
   constructor(status = true) {

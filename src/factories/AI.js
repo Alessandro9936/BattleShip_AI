@@ -1,6 +1,6 @@
-import Player from "./player";
-import gameBoard from "./gameBoard";
-import typeOfShips from "../helpers/typeOfShips";
+import Player from './player';
+import gameBoard from './gameBoard';
+import typeOfShips from '../helpers/typeOfShips';
 
 class AI extends Player {
   constructor(status) {

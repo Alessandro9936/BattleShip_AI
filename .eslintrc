@@ -1,0 +1,10 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "no-underscore-dangle": ["error", { "allow": true }]
+  }
+}

@@ -1,10 +1,10 @@
-import typeOfShips from "../helpers/typeOfShips";
-import Ship from "./ship";
+import typeOfShips from '../helpers/typeOfShips';
+import Ship from './ship';
 
 class gameBoard {
   constructor() {
     this.board = this.createGameBoard();
-    this.dir = "h";
+    this.dir = 'h';
     this.shipsInBoard = [];
   }
 
@@ -60,11 +60,11 @@ class gameBoard {
 
   _getShipCoords(entry, length) {
     const shipCoords = [];
-    if (this.dir === "h") {
+    if (this.dir === 'h') {
       for (let i = 0; i < length; i++) {
         shipCoords.push(entry + i);
       }
-    } else if (this.dir === "v") {
+    } else if (this.dir === 'v') {
       for (let i = 0; i < length; i++) {
         shipCoords.push(entry + i * 10);
       }
@@ -75,7 +75,7 @@ class gameBoard {
   _checkCoords(shipCoords) {
     //Check is shipCoords are inside gameBoard
     const canPlaceCoords =
-      this.dir === "h"
+      this.dir === 'h'
         ? this._horizontalCoordsCheck(shipCoords)
         : this._verticalCoordsCheck(shipCoords);
     //check if ship collides
@@ -87,8 +87,8 @@ class gameBoard {
   }
 
   _horizontalCoordsCheck(shipCoords) {
-    const min = Math.floor(shipCoords[0] / 10) + "1";
-    const max = Math.floor(shipCoords[0] / 10 + 1) + "0";
+    const min = Math.floor(shipCoords[0] / 10) + '1';
+    const max = Math.floor(shipCoords[0] / 10 + 1) + '0';
     return shipCoords.every((coord) => coord >= min && coord <= max);
   }
 
@@ -113,7 +113,7 @@ class gameBoard {
   }
 
   tweakDirection() {
-    return (this.dir = this.dir === "h" ? "v" : "h");
+    return (this.dir = this.dir === 'h' ? 'v' : 'h');
   }
 }
 export default gameBoard;

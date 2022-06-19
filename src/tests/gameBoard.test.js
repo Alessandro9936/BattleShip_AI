@@ -1,17 +1,17 @@
-import gameBoard from "../factories/gameBoard";
-import Ship from "../factories/ship";
-import typeOfShips from "../helpers/typeOfShips";
+import gameBoard from '../factories/gameBoard';
+import Ship from '../factories/ship';
+import typeOfShips from '../helpers/typeOfShips';
 
-jest.mock("../factories/ship");
+jest.mock('../factories/ship');
 
 let testBoard;
 beforeEach(() => (testBoard = new gameBoard()));
 
-it("create array when instance of gameBoard is created", () => {
+it('create array when instance of gameBoard is created', () => {
   expect(testBoard.board).toHaveLength(100);
 });
-describe("placeShip()", () => {
-  it("place ship given an entry and ship id (horizontal)", () => {
+describe('placeShip()', () => {
+  it('place ship given an entry and ship id (horizontal)', () => {
     const entry = 2;
     const { id, length } = typeOfShips[2];
     const coords = [2, 3, 4];
@@ -20,7 +20,7 @@ describe("placeShip()", () => {
     expect(Ship).toHaveBeenCalledWith(id, length, coords);
   });
 
-  it("place ship given an entry and ship id (vertical)", () => {
+  it('place ship given an entry and ship id (vertical)', () => {
     testBoard.tweakDirection();
     const entry = 2;
     const { id, length } = typeOfShips[2];
@@ -30,7 +30,7 @@ describe("placeShip()", () => {
     expect(Ship).toHaveBeenCalledWith(id, length, coords);
   });
 
-  it("add ship to shipsInBoard array", () => {
+  it('add ship to shipsInBoard array', () => {
     testBoard.tweakDirection();
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);
@@ -48,8 +48,8 @@ describe("placeShip()", () => {
     expect(testBoard.board[5 - 1].hasShip).toBeFalsy();
   });
 });
-describe("receiveAttack ()", () => {
-  it("check coord in gameBoard to hit if coord is given", () => {
+describe('receiveAttack ()', () => {
+  it('check coord in gameBoard to hit if coord is given', () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);
     const attackedCoord = 2;
@@ -58,14 +58,14 @@ describe("receiveAttack ()", () => {
     expect(testBoard.board[attackedCoord - 1].isHit).toBe(true);
   });
 
-  it("check coord in gameBoard to hit if coord is given", () => {
+  it('check coord in gameBoard to hit if coord is given', () => {
     testBoard.receiveAttack(2);
     expect(() => {
       testBoard.receiveAttack(2);
     }).toThrowError();
   });
 
-  it("attacked cell has NOT a ship, check that cell as hitted", () => {
+  it('attacked cell has NOT a ship, check that cell as hitted', () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);
     const attackedCoord = 9;
@@ -74,7 +74,7 @@ describe("receiveAttack ()", () => {
     expect(testBoard.board[attackedCoord - 1].isHit).toBe(true);
     expect(testBoard.board[attackedCoord - 1].hasShip).toBe(false);
   });
-  it("attacked cell has a ship, expect to call hit method on the ship placed at attacked cell", () => {
+  it('attacked cell has a ship, expect to call hit method on the ship placed at attacked cell', () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);
     const attackedCoord = 2;
@@ -83,7 +83,7 @@ describe("receiveAttack ()", () => {
     expect(testBoard.board[attackedCoord].hasShip.hit).toHaveBeenCalledTimes(1);
   });
 
-  it("attacked cell has a ship, expect to call isSunk method on the ship placed at attacked cell", () => {
+  it('attacked cell has a ship, expect to call isSunk method on the ship placed at attacked cell', () => {
     const entry = 2;
     testBoard.placeShip(entry, typeOfShips[2]);
     const attackedCoord = 2;
@@ -93,7 +93,7 @@ describe("receiveAttack ()", () => {
       1
     );
   });
-  it("place all ships successfully", () => {
+  it('place all ships successfully', () => {
     testBoard.tweakDirection();
     testBoard.placeShip(13, typeOfShips[0]);
     testBoard.tweakDirection();

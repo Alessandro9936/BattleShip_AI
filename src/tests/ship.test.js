@@ -1,15 +1,15 @@
-import Ship from "../factories/ship";
+import Ship from '../factories/ship';
 
 let testShip;
-beforeEach(() => (testShip = new Ship("cruiser", 3, [1, 2, 3])));
-describe("hit method", () => {
-  it("hit(coords) hit boat coords add coords to hits array", () => {
+beforeEach(() => (testShip = new Ship('cruiser', 3, [1, 2, 3])));
+describe('hit method', () => {
+  it('hit(coords) hit boat coords add coords to hits array', () => {
     const hitCoord = 2;
     testShip.hit(hitCoord);
     expect(testShip.hits).toHaveLength(1);
   });
 
-  it("add two attacks to hits array", () => {
+  it('add two attacks to hits array', () => {
     const hitCoord = 2;
     const hitCoord2 = 3;
     testShip.hit(hitCoord);
@@ -18,8 +18,8 @@ describe("hit method", () => {
     expect(testShip.sunk).toBe(false);
   });
 });
-describe("isSunk method", () => {
-  it("all coords of a boat are hitted, boat is sunk", () => {
+describe('isSunk method', () => {
+  it('all coords of a boat are hitted, boat is sunk', () => {
     const hitCoord1 = 1;
     const hitCoord2 = 2;
     const hitCoord3 = 3;
@@ -31,7 +31,7 @@ describe("isSunk method", () => {
     expect(testShip.sunk).toBe(true);
   });
 
-  it("NOT all coords of a boat are hitted, boat is NOT sunk", () => {
+  it('NOT all coords of a boat are hitted, boat is NOT sunk', () => {
     const hitCoord1 = 1;
     const hitCoord2 = 2;
 
