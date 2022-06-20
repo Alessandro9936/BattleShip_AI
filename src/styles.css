@@ -110,3 +110,37 @@ main {
   width: 2px;
   background-color: var(--lines);
 }
+
+.gameboard-panel {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 3rem 3rem 5fr 8rem;
+  grid-template-columns: 3rem auto;
+}
+
+.owner {
+  background-color: red;
+  grid-column: 1 / -1;
+}
+
+.horizontal-letter {
+  background-color: yellow;
+  grid-column: 2 / -1;
+}
+
+.vertical-letter {
+  background-color: yellowgreen;
+  grid-column: 1 / 2;
+}
+
+.gameboard-grid {
+  background-color: blue;
+}
+
+.button-title {
+  background-color: purple;
+}
+
+.button-container {
+  background-color: goldenrod;
+}
