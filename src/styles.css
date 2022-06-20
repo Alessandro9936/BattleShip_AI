@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'League Gothic', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+}
+
+:root {
+  --border-color: #5e636d;
+  --header-color: #373739;
+  --header-bg: #f6f6f6;
+
+  --bg-container: white;
+
+  --lines: #f2f3f4;
+
+  /* General Gameboard */
+  --text-color: #a2a6b6;
+  --buttons-title: #878c9a;
+
+  /* Player GameBoard */
+  --circle-hit: #ff0056;
+  --circle-miss: #62c6ff;
+
+  --placed-ship-bg: #d1d1df;
+  --circle-ship: #bcbdc8;
+
+  --cell-bg: #dff4ff;
+
+  /* AI GameBoard */
+  /*--circle-hit: #ff0056;*/
+  --circle-miss: #909292;
+
+  --cell-bg-ai: #ebebeb;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+
+  background: url(./assets/background.jpg) top no-repeat;
+  background-size: cover;
+}
+
+.container {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+
+  height: 80%;
+  width: 65%;
+
+  border-radius: 20px;
+  border: 12px solid var(--border-color);
+  background-color: var(--bg-container);
+
+  overflow: hidden;
+}
+
+header {
+  height: 8%;
+
+  background-color: var(--header-bg);
+
+  border-bottom: 1px solid var(--lines);
+}
+
+.logo-container {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 1.4rem;
+}
+
+.logo-container p {
+  font-family: 'League Gothic', sans-serif;
+  font-weight: bolder;
+  font-size: 1.8rem;
+
+  color: var(--header-color);
+}
+
+main {
+  height: 92%;
+}
+
+.game-container {
+  height: 100%;
+
+  display: flex;
+  gap: 4rem;
+
+  padding: 3rem;
+}
+
+.gameboard {
+  border: 1px solid black;
+  flex: 1;
+}
+
+.line {
+  height: 100%;
+  width: 2px;
+  background-color: var(--lines);
+}

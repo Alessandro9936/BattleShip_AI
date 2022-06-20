@@ -4,9 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Battleship</title>
   </head>
   <body>
-    <h1>hello</h1>
+    <div class="container">
+      <header>
+        <div class="logo-container">
+          <p>BATTLESHIP</p>
+        </div>
+      </header>
+      <main>
+        <div class="game-container">
+          <div class="gameboard gameboard-player" data-gameboard="player">
+            <div class="gameboard-panel">
+              <span class="owner"></span>
+              <div class="horizontal-letter"></div>
+              <div class="vertical-letter"></div>
+              <div class="gameboard-grid"></div>
+              <div class="button-title"></div>
+              <div class="button-container"></div>
+            </div>
+          </div>
+          <span class="line"></span>
+          <div class="gameboard gameboard-ai" data-gameboard="AI">
+            <div class="gameboard-panel">
+              <span class="owner"></span>
+              <div class="horizontal-letter"></div>
+              <div class="vertical-letter"></div>
+              <div class="gameboard-grid"></div>
+              <div class="button-title"></div>
+              <div class="button-container"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
