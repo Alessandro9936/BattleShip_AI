@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import Player from './player';
 import typeOfShips from '../helpers/typeOfShips';
 
