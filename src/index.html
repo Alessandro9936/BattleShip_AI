@@ -11,31 +11,350 @@
       <header>
         <div class="logo-container">
           <p>BATTLESHIP</p>
+          <button class="toggle-theme">Toggle</button>
         </div>
       </header>
       <main>
         <div class="game-container">
-          <div class="gameboard gameboard-player" data-gameboard="player">
-            <div class="gameboard-panel">
-              <span class="owner"></span>
-              <div class="horizontal-letter"></div>
-              <div class="vertical-letter"></div>
-              <div class="gameboard-grid"></div>
-              <div class="button-title"></div>
-              <div class="button-container"></div>
+          <div class="gameboard-container">
+            <div class="owner">
+              <button class="owner-name">Your gameboard</button>
+              <button class="direction" data-direction="h">Horizontal</button>
             </div>
-          </div>
+            <div class="gameboard">
+              <div class="gameboard-grid-container">
+                <ul class="horizontal-letters">
+                  <li class="letter">A</li>
+                  <li class="letter">B</li>
+                  <li class="letter">C</li>
+                  <li class="letter">D</li>
+                  <li class="letter">E</li>
+                  <li class="letter">F</li>
+                  <li class="letter">G</li>
+                  <li class="letter">H</li>
+                  <li class="letter">I</li>
+                  <li class="letter">L</li>
+                </ul>
+              <ul class="vertical-letters">
+                <li class="letter">1</li>
+                <li class="letter">2</li>
+                <li class="letter">3</li>
+                <li class="letter">4</li>
+                <li class="letter">5</li>
+                <li class="letter">6</li>
+                <li class="letter">7</li>
+                <li class="letter">8</li>
+                <li class="letter">9</li>
+                <li class="letter">10</li>
+              </ul>
+              <div class="gameboard-grid">
+<button class="cell" data-cell="1"></button>
+<button class="cell" data-cell="2"></button>
+<button class="cell" data-cell="3"></button>
+<button class="cell" data-cell="4"></button>
+<button class="cell" data-cell="5"></button>
+<button class="cell" data-cell="6"></button>
+<button class="cell" data-cell="7"></button>
+<button class="cell" data-cell="8"></button>
+<button class="cell" data-cell="9"></button>
+<button class="cell" data-cell="10"></button>
+<button class="cell" data-cell="11"></button>
+<button class="cell" data-cell="12"></button>
+<button class="cell" data-cell="13"></button>
+<button class="cell" data-cell="14"></button>
+<button class="cell" data-cell="15"></button>
+<button class="cell" data-cell="16"></button>
+<button class="cell" data-cell="17"></button>
+<button class="cell" data-cell="18"></button>
+<button class="cell" data-cell="19"></button>
+<button class="cell" data-cell="20"></button>
+<button class="cell" data-cell="21"></button>
+<button class="cell" data-cell="22"></button>
+<button class="cell" data-cell="23"></button>
+<button class="cell" data-cell="24"></button>
+<button class="cell" data-cell="25"></button>
+<button class="cell" data-cell="26"></button>
+<button class="cell" data-cell="27"></button>
+<button class="cell" data-cell="28"></button>
+<button class="cell" data-cell="29"></button>
+<button class="cell" data-cell="30"></button>
+<button class="cell" data-cell="31"></button>
+<button class="cell" data-cell="32"></button>
+<button class="cell" data-cell="33"></button>
+<button class="cell" data-cell="34"></button>
+<button class="cell" data-cell="35"></button>
+<button class="cell" data-cell="36"></button>
+<button class="cell" data-cell="37"></button>
+<button class="cell" data-cell="38"></button>
+<button class="cell" data-cell="39"></button>
+<button class="cell" data-cell="40"></button>
+<button class="cell" data-cell="41"></button>
+<button class="cell" data-cell="42"></button>
+<button class="cell" data-cell="43"></button>
+<button class="cell" data-cell="44"></button>
+<button class="cell" data-cell="45"></button>
+<button class="cell" data-cell="46"></button>
+<button class="cell" data-cell="47"></button>
+<button class="cell" data-cell="48"></button>
+<button class="cell" data-cell="49"></button>
+<button class="cell" data-cell="50"></button>
+<button class="cell" data-cell="51"></button>
+<button class="cell" data-cell="52"></button>
+<button class="cell" data-cell="53"></button>
+<button class="cell" data-cell="54"></button>
+<button class="cell" data-cell="55"></button>
+<button class="cell" data-cell="56"></button>
+<button class="cell" data-cell="57"></button>
+<button class="cell" data-cell="58"></button>
+<button class="cell" data-cell="59"></button>
+<button class="cell" data-cell="60"></button>
+<button class="cell" data-cell="61"></button>
+<button class="cell" data-cell="62"></button>
+<button class="cell" data-cell="63"></button>
+<button class="cell" data-cell="64"></button>
+<button class="cell" data-cell="65"></button>
+<button class="cell" data-cell="66"></button>
+<button class="cell" data-cell="67"></button>
+<button class="cell" data-cell="68"></button>
+<button class="cell" data-cell="69"></button>
+<button class="cell" data-cell="70"></button>
+<button class="cell" data-cell="71"></button>
+<button class="cell" data-cell="72"></button>
+<button class="cell" data-cell="73"></button>
+<button class="cell" data-cell="74"></button>
+<button class="cell" data-cell="75"></button>
+<button class="cell" data-cell="76"></button>
+<button class="cell" data-cell="77"></button>
+<button class="cell" data-cell="78"></button>
+<button class="cell" data-cell="79"></button>
+<button class="cell" data-cell="80"></button>
+<button class="cell" data-cell="81"></button>
+<button class="cell" data-cell="82"></button>
+<button class="cell" data-cell="83"></button>
+<button class="cell" data-cell="84"></button>
+<button class="cell" data-cell="85"></button>
+<button class="cell" data-cell="86"></button>
+<button class="cell" data-cell="87"></button>
+<button class="cell" data-cell="88"></button>
+<button class="cell" data-cell="89"></button>
+<button class="cell" data-cell="90"></button>
+<button class="cell" data-cell="91"></button>
+<button class="cell" data-cell="92"></button>
+<button class="cell" data-cell="93"></button>
+<button class="cell" data-cell="94"></button>
+<button class="cell" data-cell="95"></button>
+<button class="cell" data-cell="96"></button>
+<button class="cell" data-cell="97"></button>
+<button class="cell" data-cell="98"></button>
+<button class="cell" data-cell="99"></button>
+<button class="cell" data-cell="100"></button>
+
+              </div>
+            </div>
+            </div>
+            <div class="ships">
+              <p>Ships</p>
+              <div class="ships-container">
+              <div class="ship carrier" data-ship="carrier">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship battleship" data-ship="battleship">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship cruiser" data-ship="cruiser">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship submarine" data-ship="submarine">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship destroyer" data-ship="destroyer">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+            </div>
+            </div>
+          </div>          
           <span class="line"></span>
-          <div class="gameboard gameboard-ai" data-gameboard="AI">
-            <div class="gameboard-panel">
-              <span class="owner"></span>
-              <div class="horizontal-letter"></div>
-              <div class="vertical-letter"></div>
-              <div class="gameboard-grid"></div>
-              <div class="button-title"></div>
-              <div class="button-container"></div>
+          <div class="gameboard-container">
+            <div class="owner">
+              <button class="owner-name">AI gameboard</button>
             </div>
-          </div>
+            <div class="gameboard">
+              <div class="gameboard-grid-container">
+                <ul class="horizontal-letters">
+                  <li class="letter">A</li>
+                  <li class="letter">B</li>
+                  <li class="letter">C</li>
+                  <li class="letter">D</li>
+                  <li class="letter">E</li>
+                  <li class="letter">F</li>
+                  <li class="letter">G</li>
+                  <li class="letter">H</li>
+                  <li class="letter">I</li>
+                  <li class="letter">L</li>
+                </ul>
+              <ul class="vertical-letters">
+                <li class="letter">1</li>
+                <li class="letter">2</li>
+                <li class="letter">3</li>
+                <li class="letter">4</li>
+                <li class="letter">5</li>
+                <li class="letter">6</li>
+                <li class="letter">7</li>
+                <li class="letter">8</li>
+                <li class="letter">9</li>
+                <li class="letter">10</li>
+              </ul>
+              <div class="gameboard-grid">
+<button class="cell" data-cell="1"></button>
+<button class="cell" data-cell="2"></button>
+<button class="cell" data-cell="3"></button>
+<button class="cell" data-cell="4"></button>
+<button class="cell" data-cell="5"></button>
+<button class="cell" data-cell="6"></button>
+<button class="cell" data-cell="7"></button>
+<button class="cell" data-cell="8"></button>
+<button class="cell" data-cell="9"></button>
+<button class="cell" data-cell="10"></button>
+<button class="cell" data-cell="11"></button>
+<button class="cell" data-cell="12"></button>
+<button class="cell" data-cell="13"></button>
+<button class="cell" data-cell="14"></button>
+<button class="cell" data-cell="15"></button>
+<button class="cell" data-cell="16"></button>
+<button class="cell" data-cell="17"></button>
+<button class="cell" data-cell="18"></button>
+<button class="cell" data-cell="19"></button>
+<button class="cell" data-cell="20"></button>
+<button class="cell" data-cell="21"></button>
+<button class="cell" data-cell="22"></button>
+<button class="cell" data-cell="23"></button>
+<button class="cell" data-cell="24"></button>
+<button class="cell" data-cell="25"></button>
+<button class="cell" data-cell="26"></button>
+<button class="cell" data-cell="27"></button>
+<button class="cell" data-cell="28"></button>
+<button class="cell" data-cell="29"></button>
+<button class="cell" data-cell="30"></button>
+<button class="cell" data-cell="31"></button>
+<button class="cell" data-cell="32"></button>
+<button class="cell" data-cell="33"></button>
+<button class="cell" data-cell="34"></button>
+<button class="cell" data-cell="35"></button>
+<button class="cell" data-cell="36"></button>
+<button class="cell" data-cell="37"></button>
+<button class="cell" data-cell="38"></button>
+<button class="cell" data-cell="39"></button>
+<button class="cell" data-cell="40"></button>
+<button class="cell" data-cell="41"></button>
+<button class="cell" data-cell="42"></button>
+<button class="cell" data-cell="43"></button>
+<button class="cell" data-cell="44"></button>
+<button class="cell" data-cell="45"></button>
+<button class="cell" data-cell="46"></button>
+<button class="cell" data-cell="47"></button>
+<button class="cell" data-cell="48"></button>
+<button class="cell" data-cell="49"></button>
+<button class="cell" data-cell="50"></button>
+<button class="cell" data-cell="51"></button>
+<button class="cell" data-cell="52"></button>
+<button class="cell" data-cell="53"></button>
+<button class="cell" data-cell="54"></button>
+<button class="cell" data-cell="55"></button>
+<button class="cell" data-cell="56"></button>
+<button class="cell" data-cell="57"></button>
+<button class="cell" data-cell="58"></button>
+<button class="cell" data-cell="59"></button>
+<button class="cell" data-cell="60"></button>
+<button class="cell" data-cell="61"></button>
+<button class="cell" data-cell="62"></button>
+<button class="cell" data-cell="63"></button>
+<button class="cell" data-cell="64"></button>
+<button class="cell" data-cell="65"></button>
+<button class="cell" data-cell="66"></button>
+<button class="cell" data-cell="67"></button>
+<button class="cell" data-cell="68"></button>
+<button class="cell" data-cell="69"></button>
+<button class="cell" data-cell="70"></button>
+<button class="cell" data-cell="71"></button>
+<button class="cell" data-cell="72"></button>
+<button class="cell" data-cell="73"></button>
+<button class="cell" data-cell="74"></button>
+<button class="cell" data-cell="75"></button>
+<button class="cell" data-cell="76"></button>
+<button class="cell" data-cell="77"></button>
+<button class="cell" data-cell="78"></button>
+<button class="cell" data-cell="79"></button>
+<button class="cell" data-cell="80"></button>
+<button class="cell" data-cell="81"></button>
+<button class="cell" data-cell="82"></button>
+<button class="cell" data-cell="83"></button>
+<button class="cell" data-cell="84"></button>
+<button class="cell" data-cell="85"></button>
+<button class="cell" data-cell="86"></button>
+<button class="cell" data-cell="87"></button>
+<button class="cell" data-cell="88"></button>
+<button class="cell" data-cell="89"></button>
+<button class="cell" data-cell="90"></button>
+<button class="cell" data-cell="91"></button>
+<button class="cell" data-cell="92"></button>
+<button class="cell" data-cell="93"></button>
+<button class="cell" data-cell="94"></button>
+<button class="cell" data-cell="95"></button>
+<button class="cell" data-cell="96"></button>
+<button class="cell" data-cell="97"></button>
+<button class="cell" data-cell="98"></button>
+<button class="cell" data-cell="99"></button>
+<button class="cell" data-cell="100"></button>
+
+              </div>
+            </div>
+            </div>
+            <div class="ships">
+              <p>Ships Graveyard</p>
+              <div class="ships-container">
+              <div class="ship carrier" data-ship="carrier">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship battleship" data-ship="battleship">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship cruiser" data-ship="cruiser">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship submarine" data-ship="submarine">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+              <div class="ship destroyer" data-ship="destroyer">
+                <span class="circle-ship"></span>
+                <span class="circle-ship"></span>
+              </div>
+            </div>
+            </div>
+          </div> 
+        </div>
         </div>
       </main>
     </div>

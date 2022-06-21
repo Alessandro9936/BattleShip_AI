@@ -46,6 +46,10 @@ body {
   background-size: cover;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   position: absolute;
   right: 50%;
@@ -75,8 +79,9 @@ header {
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  padding-left: 1.4rem;
+  padding-inline: 1.4rem;
 }
 
 .logo-container p {
@@ -95,14 +100,9 @@ main {
   height: 100%;
 
   display: flex;
-  gap: 4rem;
+  gap: 3rem;
 
   padding: 3rem;
-}
-
-.gameboard {
-  border: 1px solid black;
-  flex: 1;
 }
 
 .line {
@@ -111,36 +111,142 @@ main {
   background-color: var(--lines);
 }
 
-.gameboard-panel {
+.gameboard-container {
+  border: 1px solid black;
+  flex: 1;
   height: 100%;
-  display: grid;
-  grid-template-rows: 3rem 3rem 5fr 8rem;
-  grid-template-columns: 3rem auto;
 }
 
 .owner {
-  background-color: red;
-  grid-column: 1 / -1;
+  border: 1px solid black;
+  height: 5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 0.8rem;
 }
 
-.horizontal-letter {
-  background-color: yellow;
+.owner button {
+  display: block;
+
+  border: 1px solid black;
+  border-radius: 0.2rem;
+
+  background-color: none;
+  height: 100%;
+  padding-inline: 1rem;
+}
+
+.gameboard {
+  border: 1px solid black;
+  height: 75%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gameboard-grid-container {
+  border: 1px solid black;
+  height: 27rem;
+  width: 27rem;
+
+  display: grid;
+  grid-template-columns: 2rem auto;
+  grid-template-rows: 2rem auto;
+}
+
+.horizontal-letters {
+  border: 1px solid black;
+  list-style: none;
   grid-column: 2 / -1;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.vertical-letter {
-  background-color: yellowgreen;
-  grid-column: 1 / 2;
+.vertical-letters {
+  list-style: none;
+  grid-row: 2 / -1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.letter {
+  font-size: 1.4rem;
 }
 
 .gameboard-grid {
-  background-color: blue;
+  border: 1px solid black;
+
+  display: grid;
+  gap: 0.2rem;
+
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+
+  padding: 0.2rem;
 }
 
-.button-title {
-  background-color: purple;
+.cell {
+  border: 1px solid black;
 }
 
-.button-container {
-  background-color: goldenrod;
+.ships {
+  border: 1px solid black;
+  height: 20%;
+
+  text-align: center;
+}
+
+.ships-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  row-gap: 0.6rem;
+  column-gap: 1.2rem;
+
+  margin-top: 0.4rem;
+}
+
+.ship {
+  height: 2.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 1px solid black;
+  border-radius: 0.8rem;
+}
+
+.circle-ship {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid black;
+}
+
+.carrier {
+  width: 11.25rem;
+}
+
+.battleship {
+  width: 9rem;
+}
+
+.cruiser,
+.submarine {
+  width: 6.75rem;
+}
+
+.destroyer {
+  width: 4.5rem;
 }
