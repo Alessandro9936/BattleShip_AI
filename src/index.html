@@ -19,7 +19,6 @@
           <div class="gameboard-container">
             <div class="owner">
               <button class="owner-name">Your gameboard</button>
-              <button class="direction" data-direction="h">Horizontal</button>
             </div>
             <div class="gameboard">
               <div class="gameboard-grid-container">
@@ -153,7 +152,6 @@
             </div>
             </div>
             <div class="ships">
-              <p>Ships</p>
               <div class="ships-container">
               <div class="ship carrier" data-ship="carrier">
                 <span class="circle-ship"></span>
@@ -185,7 +183,13 @@
             </div>
             </div>
           </div>          
-          <span class="line"></span>
+          <div class="toggle-direction">
+            <button class="toggle-button">Place your ships</button>
+            <span class="line"></span>
+            <button class="toggle-button">Toggle Direction</button>
+            
+          </div>
+          
           <div class="gameboard-container">
             <div class="owner">
               <button class="owner-name">AI gameboard</button>
@@ -216,7 +220,7 @@
                 <li class="letter">9</li>
                 <li class="letter">10</li>
               </ul>
-              <div class="gameboard-grid">
+              <div class="gameboard-grid ai-grid">
 <button class="cell" data-cell="1"></button>
 <button class="cell" data-cell="2"></button>
 <button class="cell" data-cell="3"></button>
@@ -322,7 +326,6 @@
             </div>
             </div>
             <div class="ships">
-              <p>Ships Graveyard</p>
               <div class="ships-container">
               <div class="ship carrier" data-ship="carrier">
                 <span class="circle-ship"></span>

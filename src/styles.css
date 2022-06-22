@@ -9,6 +9,11 @@
   src: url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 }
 
+@font-face {
+  font-family: 'Poppins', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+}
+
 :root {
   --border-color: #5e636d;
   --header-color: #373739;
@@ -18,6 +23,8 @@
 
   --lines: #f2f3f4;
 
+  --white: #fff;
+
   /* General Gameboard */
   --text-color: #a2a6b6;
   --buttons-title: #878c9a;
@@ -26,21 +33,25 @@
   --circle-hit: #ff0056;
   --circle-miss: #62c6ff;
 
+  --ship-bg: rgb(221, 221, 236, 0.5);
   --placed-ship-bg: #d1d1df;
   --circle-ship: #bcbdc8;
 
-  --cell-bg: #dff4ff;
+  --cell-bg: #d4f0ff;
 
   /* AI GameBoard */
   /*--circle-hit: #ff0056;*/
   --circle-miss: #909292;
 
-  --cell-bg-ai: #ebebeb;
+  --cell-bg-ai: #dbdada;
 }
 
 body {
   height: 100%;
   width: 100%;
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
 
   background: url(./assets/background.jpg) top no-repeat;
   background-size: cover;
@@ -61,7 +72,7 @@ button {
 
   border-radius: 20px;
   border: 12px solid var(--border-color);
-  background-color: var(--bg-container);
+  background-color: var(--white);
 
   overflow: hidden;
 }
@@ -100,46 +111,78 @@ main {
   height: 100%;
 
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
 
   padding: 3rem;
 }
 
+.toggle-direction {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-button {
+  position: absolute;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--ship-bg);
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--border-color);
+
+  white-space: nowrap;
+  padding: 0.4rem 1.2rem;
+}
+
+.toggle-button:last-of-type {
+  bottom: 0;
+}
+
 .line {
-  height: 100%;
+  flex: 1;
   width: 2px;
   background-color: var(--lines);
 }
 
 .gameboard-container {
-  border: 1px solid black;
   flex: 1;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
 }
 
 .owner {
-  border: 1px solid black;
   height: 5%;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-inline: 0.8rem;
+  justify-content: center;
 }
 
 .owner button {
-  display: block;
-
-  border: 1px solid black;
+  border: none;
   border-radius: 0.2rem;
 
-  background-color: none;
-  height: 100%;
-  padding-inline: 1rem;
+  background-color: var(--circle-hit);
+  padding: 0.3rem 0.9rem;
+  margin-left: 2rem;
+
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--white);
+  letter-spacing: 1px;
 }
 
 .gameboard {
-  border: 1px solid black;
   height: 75%;
 
   display: flex;
@@ -148,7 +191,6 @@ main {
 }
 
 .gameboard-grid-container {
-  border: 1px solid black;
   height: 27rem;
   width: 27rem;
 
@@ -158,13 +200,14 @@ main {
 }
 
 .horizontal-letters {
-  border: 1px solid black;
   list-style: none;
   grid-column: 2 / -1;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+
+  padding-inline: 0.2rem;
 }
 
 .vertical-letters {
@@ -175,16 +218,22 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
 }
 
 .letter {
-  font-size: 1.4rem;
+  height: 100%;
+  width: 2.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
 }
 
 .gameboard-grid {
-  border: 1px solid black;
-
   display: grid;
   gap: 0.2rem;
 
@@ -195,11 +244,33 @@ main {
 }
 
 .cell {
-  border: 1px solid black;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--cell-bg);
+}
+
+.cell::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 1rem;
+  background-color: var(--circle-hit);
+}
+
+.cell:hover {
+  background-color: rgb(183, 231, 255);
+}
+
+.ai-grid .cell {
+  background-color: var(--cell-bg-ai);
+}
+
+.ai-grid .cell:hover {
+  background-color: rgb(207, 207, 207);
 }
 
 .ships {
-  border: 1px solid black;
   height: 20%;
 
   text-align: center;
@@ -223,15 +294,16 @@ main {
   align-items: center;
   justify-content: space-around;
 
-  border: 1px solid black;
   border-radius: 0.8rem;
+
+  background-color: var(--ship-bg);
 }
 
 .circle-ship {
   height: 0.6rem;
   width: 0.6rem;
   border-radius: 0.4rem;
-  border: 1px solid black;
+  background-color: var(--circle-ship);
 }
 
 .carrier {
