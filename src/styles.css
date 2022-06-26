@@ -359,6 +359,18 @@ main {
 }
 
 /* MODAL */
+.hovering {
+  background-color: var(--yellow);
+}
+
+.placed {
+  background-color: var(--blue);
+}
+
+.cant-place {
+  background-color: var(--red);
+}
+
 .modal {
   position: absolute;
   right: 50%;
@@ -440,24 +452,28 @@ main {
   padding-inline: var(--modal-btn-padding);
 }
 
+.ship-preview {
+  font-size: var(--font-small);
+}
+
 .ship-preview.carrier {
-  width: calc(3.5rem * 5);
+  width: calc(2.4rem * 5);
 }
 
 .ship-preview.battleship {
-  width: calc(3.5rem * 4);
+  width: calc(2.4rem * 4);
 }
 
 .ship-preview.cruiser {
-  width: calc(3.5rem * 3);
+  width: calc(2.4rem * 3);
 }
 
 .ship-preview.submarine {
-  width: calc(3.5rem * 3);
+  width: calc(2.4rem * 3);
 }
 
 .ship-preview.destroyer {
-  width: calc(3.5rem * 2);
+  width: calc(2.4rem * 2);
 }
 
 .grid-modal {

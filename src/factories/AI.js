@@ -1,11 +1,11 @@
-/* eslint-disable class-methods-use-this */
 import Player from './player';
 import typeOfShips from '../helpers/typeOfShips';
 
 class AI extends Player {
   constructor(status, gameBoard) {
     super(status, gameBoard);
-    this.attackedCoordsArr = Array.from({ length: 99 }, (_, i) => i + 1);
+    this.attackedCoordsArr = Array.from({ length: 100 }, (_, i) => i + 1);
+    this.placeRandomShips();
   }
 
   placeRandomShips() {

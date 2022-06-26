@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-import typeOfShips from '../helpers/typeOfShips';
 import Ship from './ship';
 
 class GameBoard {
@@ -18,7 +16,6 @@ class GameBoard {
   }
 
   placeShip(entry, ship) {
-    // id, length, coords
     try {
       const { id, length, shipCoords } = this._getShipProperties(entry, ship);
       this._checkCoords(shipCoords);
@@ -26,7 +23,6 @@ class GameBoard {
       this._addShipInBoard(shipCoords, newShip);
       this.shipsInBoard.push(newShip);
     } catch (error) {
-      console.error(error);
       throw error;
     }
   }
@@ -42,7 +38,6 @@ class GameBoard {
       }
       // ADD LOGIC WHEN SUNKED}
     } catch (error) {
-      console.error(error);
       throw error;
     }
   }

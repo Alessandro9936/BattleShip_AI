@@ -6,10 +6,6 @@ class Player {
     this.gameBoard = new GameBoard();
   }
 
-  receive(coord) {
-    this.gameBoard.receiveAttack(coord);
-  }
-
   switchStatus() {
     return (this.status = !this.status);
   }
