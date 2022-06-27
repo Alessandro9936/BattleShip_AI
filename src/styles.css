@@ -23,6 +23,7 @@
   --cell-border: 1px solid var(--black);
 
   --container-shadow: 2px 2px 0 0 var(--black);
+
   --small-shadow: 1px 1px 0 0 var(--black);
   --active-shadow: inset 1px 1px 0px 1px rgba(0, 0, 0, 0.25);
 
@@ -38,6 +39,18 @@
   --board-padding: 2.6rem;
   --sub-grid-padding: 1.4rem;
   --header-padding: 0.4rem 1rem;
+}
+
+[data-theme='dark'] {
+  --black: #fff;
+  --white: rgb(28, 28, 28);
+
+  --board-border: 2px solid var(--black);
+  --cell-border: 1px solid var(--black);
+
+  --container-shadow: 2px 2px 0 0 var(--black);
+
+  --small-shadow: 1px 1px 0 0 var(--black);
 }
 
 body {
@@ -133,7 +146,7 @@ main {
   grid-template-rows: repeat(2, 1fr);
 
   border: var(--board-border);
-  box-shadow: var(--board-shadow);
+  box-shadow: var(--container-shadow);
   border-radius: var(--board-radius);
 
   overflow: hidden;
@@ -214,24 +227,34 @@ main {
 }
 
 .cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: var(--cell-radius);
   border: var(--cell-border);
   box-shadow: var(--small-shadow);
   background-color: var(--white);
 }
-/*
-.cell::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
+
+.red-mark {
+  width: 10px;
+  height: 10px;
 
   border-radius: 1rem;
   border: 1px solid black;
   box-shadow: 1px 1px 0 0 var(--black);
   background-color: var(--red);
 }
-*/
+.blue-mark {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 1rem;
+  border: 1px solid black;
+  box-shadow: 1px 1px 0 0 var(--black);
+  background-color: var(--blue);
+}
 
 .cell:hover {
   box-shadow: none;
@@ -382,7 +405,7 @@ main {
   background-color: var(--white);
 
   border: var(--board-border);
-  box-shadow: var(--board-shadow);
+  box-shadow: var(--container-shadow);
   border-radius: var(--board-radius);
 
   display: flex;

@@ -34,7 +34,7 @@ class GameBoard {
       attackedCell.isHit = true;
       if (attackedCell.hasShip) {
         attackedCell.hasShip.hit(entry);
-        attackedCell.hasShip?.isSunk();
+        attackedCell.hasShip.isSunk();
       }
       // ADD LOGIC WHEN SUNKED}
     } catch (error) {
