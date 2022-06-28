@@ -14,4 +14,4 @@ This has been a really challenging project and required me longer time than the 
 
 ## Demo
 
-Live Battleship Application demo here: https://alessandrolibrary.netlify.app/
+Live Battleship Application demo here: https://battle-ship-ai.vercel.app/
