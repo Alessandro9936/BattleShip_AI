@@ -46,11 +46,6 @@ class GameBoard {
     if (attackedCell.isHit) throw new Error("Can't hit coord multiple times");
   }
 
-  checkIfAllShipAreSunk() {
-    const shipsArr = this.board.filter((cell) => cell.hasShip);
-    return shipsArr.every((ship) => ship.hasShip.sunk);
-  }
-
   _getShipProperties(entry, ship) {
     const { id, length } = ship;
     const shipCoords = this._getShipCoords(entry, length);
@@ -59,15 +54,12 @@ class GameBoard {
 
   _getShipCoords(entry, length) {
     const shipCoords = [];
-    if (this.dir === 'h') {
-      for (let i = 0; i < length; i += 1) {
-        shipCoords.push(entry + i);
-      }
-    } else if (this.dir === 'v') {
-      for (let i = 0; i < length; i += 1) {
-        shipCoords.push(entry + i * 10);
-      }
+    for (let i = 0; i < length; i++) {
+      this.dir === 'h'
+        ? shipCoords.push(entry + i)
+        : shipCoords.push(entry + i * 10);
     }
+
     return shipCoords;
   }
 
