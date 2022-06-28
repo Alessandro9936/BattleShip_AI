@@ -11,8 +11,14 @@
       <h2>Welcome Player!</h2>
       <p>
         Before starting a new game you need to place your ships on the board.
+        Rules for placing ships: Place each ship in any horizontal or vertical
+        position. Do not place a ship so that any part of it over-laps the edge
+        of the grid or another ship.
       </p>
-      <p>You can place your ships by clicking or dragging them on the board.</p>
+      <p>
+        You can place your ships by clicking on the board. a preview will be
+        displayed.
+      </p>
 
       <p>You can also change the placing direction of your ships.</p>
       <div class="ship-to-place">
@@ -140,7 +146,13 @@
       <h1>BATTLESHIP</h1>
       <nav class="nav-bar">
         <ul class="nav-list">
-          <li class="link"><a href="#">Github Repo</a></li>
+          <li class="link">
+            <a
+              href="https://github.com/Alessandro9936/BattleShip_AI"
+              target="_blank"
+              >Github Repo</a
+            >
+          </li>
           <li class="link toggle-btn">Dark Mode</li>
         </ul>
       </nav>
@@ -181,25 +193,31 @@
             <div class="rule">
               <button class="btn-rule"></button>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur modi eveniet repudiandae! Saepe, distinctio aut
-                dolorum eius iusto praesentium expedita
+                Click on the enemy board to send a shot, you will see a mark on
+                the cell you clicked. If the mark is red you hit a ship
+                otherwise if it is blue your shot is a miss.
               </p>
             </div>
             <div class="rule">
               <button class="btn-rule"></button>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur modi eveniet repudiandae! Saepe, distinctio aut
-                dolorum eius iusto praesentium expedita
+                You are playing against a computer, its shots are random. Rule 1
+                apply also for your board when the computer send a shot.
+                Computer is not smart, it will be an easy win...or not?
               </p>
             </div>
             <div class="rule">
               <button class="btn-rule"></button>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur modi eveniet repudiandae! Saepe, distinctio aut
-                dolorum eius iusto praesentium expedita
+                The legend below contains all your ships, whenever a ship is
+                sunked it will turn to red.
+              </p>
+            </div>
+            <div class="rule">
+              <button class="btn-rule"></button>
+              <p>
+                To win and end the game you need to hit and sunk all 5
+                computer's ships.
               </p>
             </div>
           </div>
@@ -215,7 +233,7 @@
       </section>
       <div class="next-move-btn">Attack enemy gameboard</div>
       <section class="board-section">
-        <h2>AI's Board</h2>
+        <h2>Computer's Board</h2>
         <div class="board AI-board">
           <div class="gameboard-grid">
             <ul class="vertical-letters">
@@ -248,7 +266,10 @@
             <span>Rules...</span>
             <div class="rule">
               <button class="btn-rule"></button>
-              <p></p>
+              <p>
+                Even if I'm a computer I also have rules, your same rules! Let's
+                play!
+              </p>
             </div>
           </div>
           <div class="ship-legend ship-legend-player">
