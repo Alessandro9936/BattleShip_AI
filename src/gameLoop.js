@@ -4,6 +4,8 @@ import Player from './factories/player';
 import AI from './factories/AI';
 import typeOfShips from './helpers/typeOfShips';
 
+import toggleTheme from './helpers/toggleTheme';
+
 const gameLoop = (() => {
   const cellsToDrop = document.querySelectorAll('.grid-modal .cell');
   const toggleDirectionBtn = document.querySelector('.toggle-direction');
@@ -40,41 +42,43 @@ const gameLoop = (() => {
 
   function _togglePreviewCells(e) {
     const shipToPlace = shipsToPlace[0];
-    const cell = +e.target.dataset.cell;
-    const direction = player.gameBoard.dir;
+    const cellHovered = +e.target.dataset.cell;
 
     for (let i = 0; i < shipToPlace.length; i++) {
-      const cur = document.querySelector(
-        `[data-cell="${direction === 'h' ? cell + i : cell + i * 10}"]`
-      );
+      const cellNode = _getShipCellNode(i, cellHovered);
 
-      cur.classList.contains('placed')
-        ? cur.classList.toggle('cant-place')
-        : cur.classList.toggle('hovering');
+      cellNode.classList.contains('placed')
+        ? cellNode.classList.toggle('cant-place')
+        : cellNode.classList.toggle('hovering');
     }
   }
 
   function _addShipOnBoard(e, shipToPlace) {
     try {
-      const cell = +e.target.dataset.cell;
-      player.gameBoard.placeShip(cell, shipToPlace);
+      const cellClicked = +e.target.dataset.cell;
+      player.gameBoard.placeShip(cellClicked, shipToPlace);
 
-      _displayShipOnBoard(cell, shipToPlace);
+      _displayShipOnBoard(cellClicked, shipToPlace);
     } catch {
       shipsToPlace.unshift(shipToPlace);
     }
   }
 
   function _displayShipOnBoard(cell, shipToPlace) {
-    const direction = player.gameBoard.dir;
-
     for (let i = 0; i < shipToPlace.length; i++) {
-      const cur = document.querySelector(
-        `[data-cell="${direction === 'h' ? cell + i : cell + i * 10}"]`
-      );
-      cur.setAttribute('disabled', '');
-      cur.className = 'cell placed';
+      const cellInShipNode = _getShipCellNode(i, cell);
+
+      cellInShipNode.setAttribute('disabled', '');
+      cellInShipNode.className = 'cell placed';
     }
+  }
+
+  function _getShipCellNode(i, cell) {
+    const placingDirection = player.gameBoard.dir;
+
+    return document.querySelector(
+      `[data-cell="${placingDirection === 'h' ? cell + i : cell + i * 10}"]`
+    );
   }
 
   /* ******** */
@@ -82,12 +86,14 @@ const gameLoop = (() => {
   startGameBtn.addEventListener('click', _startGameHandler);
 
   function _startGameHandler() {
-    _updateUI();
+    if (shipsToPlace.length !== 0) return;
+
+    _showGameContainer();
     _createPlayerBoard();
-    _createUIBoard();
+    _createAIBoard();
   }
 
-  function _updateUI() {
+  function _showGameContainer() {
     const modal = document.querySelector('.modal');
     const gameContainer = document.querySelector('main');
 
@@ -96,36 +102,32 @@ const gameLoop = (() => {
   }
 
   function _createPlayerBoard() {
-    const container = document.querySelector('.player-grid');
+    const gridContainer = document.querySelector('.player-grid');
     const { board } = player.gameBoard;
 
-    for (let i = 0; i < board.length; i++) {
-      const cell = _createCell(i);
-
-      if (board[i].hasShip) {
-        cell.style.backgroundColor = 'var(--yellow)';
-      }
-
-      container.appendChild(cell);
-    }
+    _displayGrid(gridContainer, board);
   }
-  function _createUIBoard() {
-    const container = document.querySelector('.AI-grid');
+
+  function _createAIBoard() {
+    const gridContainer = document.querySelector('.AI-grid');
     const { board } = ai.gameBoard;
 
-    for (let i = 0; i < board.length; i++) {
-      const cell = _createCell(i);
+    _displayGrid(gridContainer, board);
+  }
 
-      //Delete at end
-      if (board[i].hasShip) {
+  function _displayGrid(gridContainer, board) {
+    for (let i = 0; i < board.length; i++) {
+      const cell = _createCellNode(i);
+
+      if (board[i].hasShip && gridContainer.classList.contains('player-grid')) {
         cell.style.backgroundColor = 'var(--yellow)';
       }
 
-      container.appendChild(cell);
+      gridContainer.appendChild(cell);
     }
   }
 
-  function _createCell(i) {
+  function _createCellNode(i) {
     const cell = document.createElement('button');
     cell.classList.add('cell');
     cell.setAttribute('data-cell', `${i + 1}`);
@@ -140,7 +142,7 @@ const gameLoop = (() => {
       ai.gameBoard.receiveAttack(entry);
 
       _displayAttack(ai.gameBoard.board, entry, e.target);
-      _checkSunked(ai.gameBoard);
+      _checkSunked(ai.gameBoard.shipsInBoard);
       player.switchStatus();
 
       _aiAutoAttack();
@@ -149,6 +151,7 @@ const gameLoop = (() => {
 
   function _displayAttack(board, entry, cell) {
     const mark = document.createElement('span');
+
     board[entry - 1].hasShip
       ? mark.classList.add('red-mark')
       : mark.classList.add('blue-mark');
@@ -157,21 +160,23 @@ const gameLoop = (() => {
 
   function _aiAutoAttack() {
     const entry = ai.sendAttack();
+
     const cellTarget = [
       ...document.querySelectorAll('.player-grid .cell'),
     ].find((c) => +c.dataset.cell === entry);
+
     player.gameBoard.receiveAttack(entry);
 
-    _checkSunked(player.gameBoard);
+    _checkSunked(player.gameBoard.shipsInBoard);
     _displayAttack(player.gameBoard.board, entry, cellTarget);
     ai.switchStatus();
     player.switchStatus();
   }
 
-  function _checkSunked(gb) {
+  function _checkSunked(ships) {
     const activePlayer = player.status ? 'player' : 'ai';
 
-    gb.shipsInBoard.forEach((ship) => {
+    ships.forEach((ship) => {
       if (activePlayer === 'player' && ship.sunk) {
         const shipsLegend = document.querySelector('.ship-legend-player');
         _markShipSunkUI(ship, shipsLegend);
@@ -181,7 +186,7 @@ const gameLoop = (() => {
       }
     });
 
-    if (gb.shipsInBoard.every((ship) => ship.sunk)) {
+    if (ships.every((ship) => ship.sunk)) {
       _createWinningModal();
     }
   }
@@ -220,24 +225,6 @@ const gameLoop = (() => {
   }
 
   /* ******** */
-
-  const body = document.querySelector('body');
-  body.setAttribute('data-theme', 'light');
   const toggleThemeBtn = document.querySelector('.toggle-btn');
-
-  function setTheme(theme) {
-    body.setAttribute('data-theme', theme);
-  }
-
-  toggleThemeBtn.addEventListener('click', () => {
-    const activeTheme = body.getAttribute('data-theme');
-
-    if (activeTheme === 'light') {
-      setTheme('dark');
-      toggleThemeBtn.textContent = 'Light Mode';
-    } else {
-      setTheme('light');
-      toggleThemeBtn.textContent = 'Dark Mode';
-    }
-  });
+  toggleThemeBtn.addEventListener('click', toggleTheme);
 })();
