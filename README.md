@@ -12,8 +12,6 @@ A fun and engaging battleship game against a computer capable to make random pla
 
 ## Screenshots
 
-![Battleship game image](../designs/batt-white.png)
-
 ## Technologies
 
 **HTML** - **CSS** - **JAVASCRIPT** - **JEST**
