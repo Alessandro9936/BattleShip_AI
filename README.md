@@ -1,17 +1,19 @@
-# BattleShip_AI
+# TOD_Battleship
 
-This is a project from my Odin curriculum, it's fun and engaging battleship game against a computer capable to make random plays.
+This is a project from the full stack curriculum 'The Odin Project' - Testing Javascript Section
 
-## Built With
+## Demo link
+Play game on this link --> https://battle-ship-ai.vercel.app/
 
-- HTML
-- CSS
-- Javascript
+## About The App
+A fun and engaging battleship game against a computer capable to make random plays.
+
+## Screenshots
+
+## Technologies
+**HTML** - **CSS** - **JAVASCRIPT** - **JEST**
 
 ## What I Learned
+I adopted a Test Driven Development first approach. One of the requirements for this project was to build the game logic with the guidance of tests before building any sort of UI. This approach really helped me to start learning how to separate concerns inside my projects, and the basics of unit testing.
 
-This has been a really challenging project and required me longer time than the others since I implemented for the first time unit testing and TDD using a 'build logic first' approach. Building logic first means to implement all the logic of the game and the connection between components without having an user interface, the only way to understand if your are doing things right is the response coming from tests.
 
-## Demo
-
-Live Battleship Application demo here: https://battle-ship-ai.vercel.app/
