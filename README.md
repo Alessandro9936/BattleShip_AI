@@ -11,7 +11,7 @@ Play game on this link --> https://battle-ship-ai.vercel.app/
 A fun and engaging battleship game against a computer capable to make random plays.
 
 ## Screenshots
-
+![Battleship - Google Chrome 2022-07-28 13-06-37](https://user-images.githubusercontent.com/64644550/181902705-36aa733e-d8f0-420c-8d03-d2f360cba4bc.gif)
 ## Technologies
 
 **HTML** - **CSS** - **JAVASCRIPT** - **JEST**
