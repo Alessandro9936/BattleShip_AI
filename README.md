@@ -1,4 +1,4 @@
-# TOD_Battleship
+# Battleship_AI
 
 This is a project from the full stack curriculum 'The Odin Project' - Testing Javascript Section
 
